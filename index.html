@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacco e Pallet in Millimetri</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Includi la libreria SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <!-- Contenitore del logo -->
+    <div id="logoContainer">
+        <img src="logo.jpg" alt="Logo" id="logoImage">
+    </div>
+
+    <div class="controls">
+        <label for="saccoWidth">Larghezza sacco (mm): </label>
+        <input type="number" id="saccoWidth" value="100">
+        
+        <label for="saccoHeight">Altezza sacco (mm): </label>
+        <input type="number" id="saccoHeight" value="200">
+        
+        <label for="saccoRotation">Rotazione (gradi 0-360): </label>
+        <input type="number" id="saccoRotation" value="0" min="0" max="360">
+        
+        <button id="createSacco">Crea Sacco</button>
+    </div>
+
+    <!-- Immagine tra area di lavoro e settaggi -->
+    <div id="imageContainer">
+        <img src="pinza.jpg" alt="Immagine Pinza" id="pinzaImage">
+    </div>
+
+    <div id="workspace">
+        <div id="pallet">Pallet (1200mm x 800mm)</div>
+    </div>
+
+    <div class="info-table">
+        <h3>Lista Sacchi</h3>
+        <table id="saccoTable">
+            <thead>
+                <tr>
+                    <th># Sacco</th>
+                    <th>Coordinata X (mm)</th>
+                    <th>Coordinata Y (mm)</th>
+                    <th>Rotazione (°)</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Righe sacchi -->
+            </tbody>
+        </table>
+
+        <!-- Pulsante per esportare la tabella -->
+        <button id="exportButton" class="futuristic-button">Esporta Tabella</button>
+    </div>
+
+    <!-- Aggiungi il tuo script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+

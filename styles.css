@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Usa il percorso corretto dell'immagine */
+    background-size: cover; /* L'immagine copre tutta la pagina */
+    background-position: center; /* Posiziona l'immagine al centro */
+    background-repeat: no-repeat; /* Impedisce che l'immagine si ripeta */
+}
+
+
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+/* Input futuristici */
+.controls input[type="number"] {
+    width: 150px;
+    padding: 10px;
+    margin: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ffea;
+    border: 1px solid #00ffea;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+.controls input[type="number"]:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.4) inset;
+}
+#workspace {
+    position: relative;
+    width: 600px; /* 1200 mm */
+    height: 400px; /* 800 mm */
+    border: 2px dashed #ccc;
+    background-color: #fff;
+}
+
+#pallet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 600px; /* 1200 mm */
+    height: 100px; /* 200 mm */
+    background-color: #138b27;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.info-table {
+    width: 600px; /* Larghezza maggiore per evitare scrollbar */
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.sacco-wrapper {
+    position: relative;
+}
+
+.sacco {
+    position: relative;
+    background-color: #ffcc00;
+    border: 2px solid #ff9900;
+    border-radius: 5px;
+    cursor: grab;
+    transform-origin: center;
+}
+
+.sacco-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+#imageContainer {
+    margin-top: 15px;
+    margin-bottom: 15px; /* Distanza tra l'immagine e l'area di lavoro */
+}
+
+#pinzaImage {
+    width: 1000px; /* Larghezza dell'immagine */
+    height: 150px; /* Altezza dell'immagine */
+}
+/* Pulsante futuristico */
+#createSacco {
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #004e66, #00868b);
+    color: #00ffea;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+#createSacco:hover {
+    background: #00bfae;
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.6) inset;
+    transform: scale(1.05);
+}
+
+/* Etichette */
+.controls label {
+    color: #00ffea;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 5px;
+}
+/* Stile del contenitore del logo */
+#logoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+}
+
+/* Stile dell'immagine del logo */
+#logoImage {
+    width: 250px;  /* Dimensione personalizzabile */
+    height: auto;
+    max-height: 170px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 50px rgba(0, 255, 255, 0.5));
+}
+/* Stile futuristico per i pulsanti */
+.futuristic-button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #0f0f0f;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.futuristic-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.futuristic-button:hover::before {
+    left: 100%;
+}
+
+.futuristic-button:hover {
+    background-color: #00ffcc;
+    color: #0f0f0f;
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+}
+
+/* Effetto al click */
+.futuristic-button:active {
+    transform: scale(0.95);
+}
+
+/* Stile specifico per il pulsante di eliminazione nella tabella */
+.delete-button {
+    background-color: #ff0000;
+    border: 2px solid #ff4d4d;
+}
+
+.delete-button:hover {
+    background-color: #ff4d4d;
+    color: #fff;
+    box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+}

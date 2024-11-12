@@ -1,0 +1,257 @@
+/* Applica un box model comune a tutti gli elementi */
+* {
+    box-sizing: border-box; /* Assicura che padding e border non influenzino le dimensioni complessive */
+    margin: 0; /* Rimuove i margini predefiniti */
+    padding: 0; /* Rimuove il padding predefinito */
+    font-family: Arial, sans-serif; /* Imposta il carattere predefinito per tutti gli elementi */
+}
+
+/* Stile per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif; /* Usa il carattere Arial */
+    display: flex; /* Imposta il corpo come un contenitore flessibile */
+    flex-direction: column; /* Gli elementi sono disposti in colonna */
+    align-items: center; /* Centra gli elementi orizzontalmente */
+    margin: 0; /* Rimuove il margine predefinito */
+    padding: 0; /* Rimuove il padding predefinito */
+    background-image: url('background.jpg'); /* Imposta l'immagine di sfondo */
+    background-size: cover; /* L'immagine di sfondo copre tutta la pagina */
+    background-position: center; /* Posiziona l'immagine di sfondo al centro */
+    background-repeat: no-repeat; /* Impedisce che l'immagine di sfondo si ripeta */
+}
+
+/* Stile per il contenitore dei controlli (pulsanti, input, ecc.) */
+.controls {
+    display: flex; /* Usa il layout flex per disporre gli elementi in riga */
+    gap: 15px; /* Distanza tra gli elementi */
+    margin-bottom: 20px; /* Spazio sotto il contenitore */
+    padding: 10px; /* Padding interno */
+    background: rgba(0, 0, 0, 0.6); /* Sfondo semi-trasparente */
+    border: 1px solid rgba(0, 255, 255, 0.5); /* Bordo con colore ciano semi-trasparente */
+    border-radius: 10px; /* Rende gli angoli arrotondati */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); /* Aggiunge un'ombra per un effetto futuristico */
+}
+
+/* Stile per gli input numerici all'interno del contenitore dei controlli */
+.controls input[type="number"] {
+    width: 150px; /* Larghezza dell'input */
+    padding: 10px; /* Spazio interno */
+    margin: 5px; /* Distanza tra gli input */
+    background: rgba(0, 0, 0, 0.8); /* Sfondo scuro con trasparenza */
+    color: #00ffea; /* Colore del testo in ciano */
+    border: 1px solid #00ffea; /* Bordo ciano */
+    border-radius: 10px; /* Angoli arrotondati */
+    outline: none; /* Rimuove il contorno predefinito */
+    font-size: 14px; /* Imposta la dimensione del font */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Aggiunge un'ombra leggera */
+    transition: all 0.3s ease; /* Transizione morbida per gli effetti */
+}
+
+/* Effetto quando l'input numerico è selezionato */
+.controls input[type="number"]:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.4) inset; /* Ombra più intensa e effetto inset */
+}
+
+/* Stile per l'area di lavoro */
+#workspace {
+    position: relative; /* Imposta la posizione come relativa per contenere gli elementi assoluti */
+    width: 600px; /* Larghezza dell'area di lavoro */
+    height: 400px; /* Altezza dell'area di lavoro */
+    border: 2px dashed #ccc; /* Bordo tratteggiato grigio */
+    background-color: #fff; /* Sfondo bianco */
+}
+
+/* Stile per il "pallet" (area di base del sacco) */
+#pallet {
+    position: absolute; /* Posizione assoluta rispetto al suo contenitore */
+    bottom: 0; /* Posiziona il pallet in basso */
+    left: 0; /* Posiziona il pallet a sinistra */
+    width: 600px; /* Larghezza del pallet */
+    height: 100px; /* Altezza del pallet */
+    background-color: #138b27; /* Colore di sfondo verde */
+    color: #fff; /* Colore del testo bianco */
+    font-weight: bold; /* Imposta il testo come grassetto */
+    display: flex; /* Dispone gli elementi nel pallet in riga */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    align-items: center; /* Centra il contenuto verticalmente */
+    font-size: 12px; /* Imposta la dimensione del font */
+}
+
+/* Stile per la tabella delle informazioni */
+.info-table {
+    width: 600px; /* Larghezza della tabella */
+    overflow-x: auto; /* Aggiunge lo scorrimento orizzontale se necessario */
+    margin-top: 20px; /* Spazio sopra la tabella */
+}
+
+/* Stile per la tabella */
+table {
+    width: 100%; /* La tabella occupa tutta la larghezza disponibile */
+    border-collapse: collapse; /* Unisce i bordi delle celle */
+}
+
+/* Stile per le celle della tabella */
+th, td {
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    padding: 8px; /* Spazio interno alle celle */
+    text-align: center; /* Allinea il testo al centro */
+}
+
+/* Stile per l'intestazione della tabella */
+th {
+    background-color: #f2f2f2; /* Sfondo grigio chiaro */
+}
+
+/* Stile per il wrapper del sacco */
+.sacco-wrapper {
+    position: relative; /* Posizione relativa per il sacco */
+}
+
+/* Stile per il sacco */
+.sacco {
+    position: relative; /* Posizione relativa per permettere il movimento */
+    background-color: #ffcc00; /* Colore di sfondo giallo per il sacco */
+    border: 2px solid #ff9900; /* Bordo arancione */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: grab; /* Indica che l'elemento può essere trascinato */
+    transform-origin: center; /* Imposta il punto di rotazione al centro */
+}
+
+/* Stile per il numero del sacco */
+.sacco-number {
+    position: absolute; /* Posizione assoluta rispetto al sacco */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra orizzontalmente */
+    transform: translate(-50%, -50%); /* Centra perfettamente il numero */
+    font-size: 18px; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    color: #000; /* Colore nero per il numero */
+    background-color: rgba(255, 255, 255, 0.7); /* Sfondo bianco semi-trasparente */
+    padding: 5px; /* Spazio interno al numero */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-align: center; /* Allinea il testo al centro */
+}
+
+/* Stile per il contenitore dell'immagine */
+#imageContainer {
+    margin-top: 15px; /* Spazio sopra l'immagine */
+    margin-bottom: 15px; /* Spazio sotto l'immagine */
+}
+
+/* Stile per l'immagine della pinza */
+#pinzaImage {
+    width: 1000px; /* Larghezza dell'immagine */
+    height: 150px; /* Altezza dell'immagine */
+}
+
+/* Stile per il pulsante "Crea Sacco" */
+#createSacco {
+    padding: 10px 20px; /* Spazio interno al pulsante */
+    background: linear-gradient(145deg, #004e66, #00868b); /* Gradiente di colore per lo sfondo */
+    color: #00ffea; /* Colore del testo ciano */
+    border: none; /* Nessun bordo */
+    border-radius: 10px; /* Angoli arrotondati */
+    cursor: pointer; /* Indica che il pulsante è cliccabile */
+    font-size: 14px; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Aggiunge un'ombra futuristica */
+    transition: all 0.3s ease; /* Effetto di transizione al passaggio del mouse */
+    text-transform: uppercase; /* Trasforma il testo in maiuscolo */
+}
+
+/* Effetto quando il pulsante viene passato con il mouse */
+#createSacco:hover {
+    background: #00bfae; /* Cambia il colore di sfondo */
+    color: #000; /* Colore del testo nero */
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.6) inset; /* Aggiunge ombre più intense */
+    transform: scale(1.05); /* Aumenta leggermente le dimensioni del pulsante */
+}
+
+/* Stile per le etichette dei controlli */
+.controls label {
+    color: #00ffea; /* Colore del testo in ciano */
+    font-weight: bold; /* Grassetto */
+    font-size: 14px; /* Dimensione del font */
+    margin-right: 5px; /* Spazio a destra dell'etichetta */
+}
+
+/* Stile per il contenitore del logo */
+#logoContainer {
+    width: 100%; /* Occupa tutta la larghezza */
+    display: flex; /* Layout flex per centrare il logo */
+    justify-content: center; /* Centra il logo orizzontalmente */
+    align-items: center; /* Centra il logo verticalmente */
+    padding: 10px 0; /* Padding sopra e sotto */
+    background: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente */
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5); /* Bordo inferiore ciano */
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2); /* Ombra sotto il logo */
+}
+
+/* Stile per l'immagine del logo */
+#logoImage {
+    width: 250px; /* Larghezza dell'immagine del logo */
+    height: auto; /* Altezza automatica per mantenere le proporzioni */
+    max-height: 170px; /* Limita l'altezza massima */
+    object-fit: contain; /* Mantiene le proporzioni senza ritagliare */
+    filter: drop-shadow(0 0 50px rgba(0, 255, 255, 0.5)); /* Aggiunge un'ombra futuristica */
+}
+
+/* Stile per i pulsanti futuristici */
+.futuristic-button {
+    position: relative; /* Posizione relativa per l'effetto di animazione */
+    display: inline-block; /* Dispone il pulsante in linea con altri elementi */
+    padding: 10px 20px; /* Spazio interno */
+    color: #fff; /* Colore del testo bianco */
+    font-size: 14px; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-transform: uppercase; /* Testo in maiuscolo */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    background: #0f0f0f; /* Colore di sfondo scuro */
+    border: 2px solid #00ffcc; /* Bordo ciano */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: pointer; /* Indica che è cliccabile */
+    overflow: hidden; /* Nasconde gli elementi che escono dal pulsante */
+    transition: 0.2s; /* Effetto di transizione */
+}
+
+/* Effetto animato quando il pulsante è hoverato */
+.futuristic-button::before {
+    content: ""; /* Crea un elemento pseudo che verrà animato */
+    position: absolute; /* Posizione assoluta per l'animazione */
+    top: 0; /* Allinea all'alto */
+    left: -100%; /* Posiziona a sinistra fuori dallo schermo */
+    width: 100%; /* Larghezza del gradiente */
+    height: 100%; /* Altezza del pulsante */
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.4), transparent); /* Effetto di gradiente */
+    transition: 0.5s; /* Transizione per il movimento */
+}
+
+/* Effetto quando il pulsante è hoverato */
+.futuristic-button:hover::before {
+    left: 100%; /* Sposta l'elemento pseudo verso destra */
+}
+
+/* Effetto quando il pulsante è hoverato */
+.futuristic-button:hover {
+    background-color: #00ffcc; /* Cambia il colore di sfondo */
+    color: #0f0f0f; /* Colore del testo scuro */
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc; /* Aggiunge un'ombra brillante */
+}
+
+/* Effetto al clic del pulsante */
+.futuristic-button:active {
+    transform: scale(0.95); /* Rimpicciolisce il pulsante durante il clic */
+}
+
+/* Stile per il pulsante di eliminazione nella tabella */
+.delete-button {
+    background-color: #ff0000; /* Colore di sfondo rosso */
+    border: 2px solid #ff4d4d; /* Bordo rosso chiaro */
+}
+
+/* Effetto quando il pulsante di eliminazione è hoverato */
+.delete-button:hover {
+    background-color: #ff4d4d; /* Cambia il colore di sfondo */
+    color: #fff; /* Colore del testo bianco */
+    box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d; /* Aggiunge un'ombra rossa */
+}
