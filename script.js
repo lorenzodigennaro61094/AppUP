@@ -107,7 +107,14 @@ let offsetX, offsetY, currentSaccoWrapper, initialX, initialY;
 
 // Funzione per iniziare il drag and drop
 function startDrag(event, saccoWrapper, width, height) {
+    event.preventDefault(); // Impedisce il comportamento predefinito del browser
+ 
     currentSaccoWrapper = saccoWrapper;
+ 
+    // Supporto per mouse e touch
+ const clientX = event.clientX || event.touches[0].clientX;
+ const clientY = event.clientY || event.touches[0].clientY;
+
 
     offsetX = event.clientX - saccoWrapper.offsetLeft;
     offsetY = event.clientY - saccoWrapper.offsetTop;
@@ -119,6 +126,10 @@ function startDrag(event, saccoWrapper, width, height) {
 // Funzione per spostare il sacco
 function onDrag(event) {
     if (!currentSaccoWrapper) return;
+
+        // Supporto per mouse e touch
+        const clientX = event.clientX || event.touches[0].clientX;
+        const clientY = event.clientY || event.touches[0].clientY;
     
     const x = event.clientX - offsetX;
     const y = event.clientY - offsetY;
@@ -133,6 +144,9 @@ function onDrag(event) {
 function stopDrag() {
     document.removeEventListener('mousemove', onDrag);
     document.removeEventListener('mouseup', stopDrag);
+
+    document.removeEventListener('touchmove', onDrag);//aggiunti per touch
+    document.removeEventListener('touchend', stopDrag);//aggiunti per touch
 }
 
 // Funzione per aggiornare la tabella dopo il drag
