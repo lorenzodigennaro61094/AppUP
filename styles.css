@@ -47,8 +47,12 @@ body {
 }
 #workspace {
     position: relative;
-    width: 600px; /* 1200 mm */
-    height: 400px; /* 800 mm */
+    width: 90vw; /* Larghezza del 90% della viewport */
+    height: 50vh; /* Altezza del 50% della viewport */
+    max-width: 600px; /* Limita la larghezza massima a 600px */
+    max-height: 400px; /* Limita l'altezza massima a 400px */
+   /* width: 600px; /* 1200 mm */
+   /* height: 400px; /* 800 mm */
     border: 2px dashed #ccc;
     background-color: #fff;
 }
@@ -57,9 +61,11 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 600px; /* 1200 mm */
-    height: 100px; /* 200 mm */
-    background-color: #138b27;
+    width: 100%; /* Adatta il pallet alla larghezza del workspace */
+    height: 25%; /* Adatta l'altezza al 25% del workspace */
+  /*  width: 600px; /* 1200 mm */
+   /* height: 100px; /* 200 mm */
+    background-color: #192cc2;
     color: #fff;
     font-weight: bold;
     display: flex;
